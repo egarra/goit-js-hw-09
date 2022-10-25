@@ -1,2 +1,0 @@
-!function(){var e=document.querySelector("#datetime-picker"),t=document.querySelector("[data-start]");t.disabled=!0;var a={enableTime:!0,time_24hr:!0,defaultDate:new Date,minuteIncrement:1,onClose:function(e){var a=Date.parse(e)-Date.parse(new Date);return a<=0?alert("Please choose a date in the future"):t.disabled=!1,a}};flatpickr(e,a),t.addEventListener("click",(function(){console.log(Date.parse(e.value))}))}();
-//# sourceMappingURL=02-timer.3e730f4b.js.map
