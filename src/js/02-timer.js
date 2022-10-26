@@ -36,10 +36,27 @@ function convertMs(ms) {
     return { days, hours, minutes, seconds };
   }
 
-function clockUpdate() {
+function clockUpdate() { 
   let timerObj = convertMs(Date.parse(dateInput.value) - Date.parse(new Date()));
 
-  labelsValue.forEach((label, i) => label.textContent = Object.values(timerObj)[i])
+  function addZero(num) {
+    if(num <= 9) {
+        return '0' + num;
+    } else {
+        return num;
+    }
+}
+
+  labelsValue.forEach((label, i) => {
+    label.textContent = addZero(Object.values(timerObj)[i])
+
+    if(Object.values(timerObj)[i] < 0) {
+      label.textContent = '00'
+      clearInterval(startTimer)
+      startBtn.textContent = 'Start';
+      startBtn.disabled = true;
+    }
+  })
 }
 
 startBtn.addEventListener('click', () => {
